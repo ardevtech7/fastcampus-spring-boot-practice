@@ -13,7 +13,7 @@ import org.springframework.context.event.EventListener;
 
 import javax.annotation.PostConstruct;
 
-@EnableCaching
+//@EnableCaching
 @RequiredArgsConstructor
 @ConfigurationPropertiesScan
 @SpringBootApplication

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @NoArgsConstructor
 @AllArgsConstructor(staticName = "of")
 @Data
@@ -13,6 +15,6 @@ public class Student {
     private Grade grade;
 
     public enum Grade {
-        A, B, C, D, E
+        A, B, C, D, F
     }
 }
