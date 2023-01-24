@@ -1,4 +1,4 @@
-package com.fastcampus.springbootpractice.service;
+package com.fastcampus.springbootpractice.logic.service;
 
 import com.fastcampus.springbootpractice.logic.Sort;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,13 +1,19 @@
 package com.fastcampus.springbootpractice;
 
 import com.fastcampus.springbootpractice.properties.MyProperties;
+import com.fastcampus.springbootpractice.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.event.EventListener;
 
 import javax.annotation.PostConstruct;
 
+@EnableCaching
 @RequiredArgsConstructor
 @ConfigurationPropertiesScan
 @SpringBootApplication
@@ -17,7 +23,8 @@ public class FastcampusSpringBootPracticeApplication {
 //	private final Integer height;
 //	private final Environment environment;
 //	private final ApplicationContext applicationContext;
-	private final MyProperties myProperties;
+//	private final MyProperties myProperties;
+	private final StudentService studentService;
 
 //	public FastcampusSpringBootPracticeApplication(
 //			@Value("${my.height}")Integer height,
@@ -34,12 +41,22 @@ public class FastcampusSpringBootPracticeApplication {
 		SpringApplication.run(FastcampusSpringBootPracticeApplication.class, args);
 	}
 
-	@PostConstruct
+//	@PostConstruct
+//	public void init() {
+////		System.out.println("[@Value] " + height);
+////		System.out.println("[Environment] " + environment.getProperty("my.height"));
+////		System.out.println("[ApplicatonContext] " + applicationContext.getEnvironment().getProperty("my.height"));
+//		System.out.println("[configurationPros]" + myProperties.getHeight());
+//	}
+
+	@EventListener(ApplicationReadyEvent.class)
 	public void init() {
-//		System.out.println("[@Value] " + height);
-//		System.out.println("[Environment] " + environment.getProperty("my.height"));
-//		System.out.println("[ApplicatonContext] " + applicationContext.getEnvironment().getProperty("my.height"));
-		System.out.println("[configurationPros]" + myProperties.getHeight());
+		studentService.printStudent("jack");
+		studentService.printStudent("jack");
+		studentService.printStudent("jack");
+		studentService.printStudent("fred");
+		studentService.printStudent("cassie");
+		studentService.printStudent("cassie");
 	}
 
 }
